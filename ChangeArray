@@ -1,0 +1,57 @@
+java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+/**
+ * The Main class implements an application that reads lines from the standard input
+ * and prints them to the standard output.
+ */
+public class Main {
+  /**
+   * Iterate through each line of input.
+   */
+ public static void main(String[] args) {
+        InputStreamReader reader = new InputStreamReader(System.in, StandardCharsets.UTF_8);
+
+        try (BufferedReader in = new BufferedReader(reader)) {
+            String line;
+
+            while ((line = in.readLine()) != null) {
+
+                ArrayList<Integer> myIntegers = new ArrayList<>();
+
+                String[] splited = line.split(" ");
+
+                
+                for (String part : splited) {
+                    myIntegers.add(Integer.parseInt(part));
+                    
+                }
+                
+               System.out.print(myIntegers.get(0));
+
+                  for (int i = 0; i < myIntegers.toArray().length + 1; i++) {
+                    if( i+1 >= myIntegers.toArray().length){
+                        System.out.println(" ");
+                    }else{
+                    int number = myIntegers.get(i + 1) - myIntegers.get(i);
+                    
+                   System.out.print(" " + number);
+                }
+                
+
+            
+                  }
+                
+                
+                
+
+            }
+        } catch (IOException e) {
+            System.out.println("there was a problem: " + e);
+            e.printStackTrace();
+        }
+    }
+
+}
